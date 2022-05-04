@@ -1,1 +1,3 @@
-# shinyLiposome
+# Shiny Liposome
+
+This is an R Shiny app that ...
