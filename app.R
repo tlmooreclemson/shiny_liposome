@@ -1,5 +1,4 @@
 library(shiny)
-#library(readr)
 
 # Load data ----
 diam_url <- "https://raw.githubusercontent.com/tlmooreclemson/shiny_liposome/main/data/ann_diameter_predictions.csv"
@@ -17,8 +16,6 @@ names(df)[names(df) == "conc"] <- "Organic Phase Concentration (mg/ml)"
 names(df)[names(df) == "ratio_aq_org"] <- "Aqueous:Organic Volume Ratio"
 names(df)[names(df) == "ANN_diameter_nm"] <- "Predicted Diameter (nm)"
 
-
-
 # Shiny app -----
 ui <- fluidPage(
   ## App title -----
@@ -32,6 +29,7 @@ ui <- fluidPage(
                "liposome properties. Click 'Submit'",
                "when you are finished to get appropriate",
                "formulations."),
+      helpText("Press 'Reset' to start a new prediction."),
       # Select whether curcumin loading is desired
       #radioButtons("curc_load", h4("Curcumin loading?"),
       #             choices = list("Yes" = 50, "No" = 0),
@@ -78,7 +76,7 @@ server <- function(input, output) {
   })
   
   output$table <- renderTable({
-    head(result_df$d1)
+    head(result_df$d1, n=10)
   })
 }
 
