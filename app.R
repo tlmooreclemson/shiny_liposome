@@ -67,8 +67,8 @@ server <- function(input, output) {
     temp$"Organic Phase Concentration (mg/ml)" = df$`Organic Phase Concentration (mg/ml)`
     temp$"Aqueous:Organic Volume Ratio" = df$"Aqueous:Organic Volume Ratio"
     temp$"Predicted Diameter (nm)" = df$"Predicted Diameter (nm)"
-    temp = temp[which(temp$"Predicted Diameter (nm)" < input$desired_diam+5 &
-                        temp$"Predicted Diameter (nm)" > input$desired_diam-5),]
+    temp = temp[which(temp$"Predicted Diameter (nm)" < input$desired_diam+10 &
+                        temp$"Predicted Diameter (nm)" > input$desired_diam-10),]
     temp$"Absolute Error (nm)" = abs(input$desired_diam-temp$"Predicted Diameter (nm)")
     temp = temp[order(temp$"Absolute Error (nm)"),] # Order results by absolute error
     
